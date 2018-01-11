@@ -1,0 +1,669 @@
+#LyX 2.1 created this file. For more info see http://www.lyx.org/
+\lyxformat 474
+\begin_document
+\begin_header
+\textclass article
+\use_default_options true
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_math auto
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Standard
+Eric E.
+ Gonzalez
+\end_layout
+
+\begin_layout Standard
+CSCE 221-501, Leyk
+\end_layout
+
+\begin_layout Section
+Program Description
+\end_layout
+
+\begin_layout Standard
+This program implements a custom vector class that makes use of arrays,
+ templates, and overloaded operators in order to effectively act as a C++
+ container with possible practical use.
+ The first implementation of this program is only capable of holding char
+ type objects, while the second incarnation makes use of templates to allow
+ for a broader, more general usage, allowing for multiple object types to
+ be stored in the vector class.
+ The design is simple, yet robust.
+\end_layout
+
+\begin_layout Section
+Program Purpose
+\end_layout
+
+\begin_layout Standard
+The purpose of this assignment was to teach us how to make use of abstract
+ data types and arrays in order to create a usable vector class capable
+ of holding objects of multiple different data types.
+ It was a challenging first project that helped reenforce concepts learned
+ in CSCE 121, as well as prepare us for the format of future assignments.
+ The concepts learned here will be important as the semester rolls onward.
+\end_layout
+
+\begin_layout Section
+ADT Run Times
+\end_layout
+
+\begin_layout Standard
+get_size() = 
+\begin_inset Formula $O(1)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+get_capacity() = 
+\begin_inset Formula $O(1)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+elem_at_rank(int r) const = 
+\begin_inset Formula $O(1)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+insert_at_rank(int r, const T& elem) = 
+\begin_inset Formula $O(n)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+replace_at_rank(int r, const T& elem) = 
+\begin_inset Formula $O(n)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+remove_at_rank(int r) = 
+\begin_inset Formula $O(n)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+find_max_index(const My_vec<T>& v,int size) = 
+\begin_inset Formula $O(n)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+sort_max(My_vec<T>& vec) = 
+\begin_inset Formula $O(n^{2})$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Compiler Instructions
+\end_layout
+
+\begin_layout Standard
+main.cpp (Generic Template Version):
+\end_layout
+
+\begin_layout Enumerate
+Open putty and login to build.cse.tamu.edu
+\end_layout
+
+\begin_layout Enumerate
+Open containing folder 
+\begin_inset Quotes eld
+\end_inset
+
+cd CSCE221/221-A1-code/
+\begin_inset Quotes erd
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Enter command 
+\begin_inset Quotes eld
+\end_inset
+
+make all
+\begin_inset Quotes erd
+\end_inset
+
+ to run Makefile and create main.o
+\end_layout
+
+\begin_layout Enumerate
+Enter command 
+\begin_inset Quotes eld
+\end_inset
+
+./main
+\begin_inset Quotes erd
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+main_char.cpp (Char-Only Version):
+\end_layout
+
+\begin_layout Standard
+1.
+ Open putty and login to build.cse.tamu.edu
+\end_layout
+
+\begin_layout Standard
+2.
+ Open containing folder “cd CSCE221/221-A1-code/”
+\end_layout
+
+\begin_layout Standard
+3.
+ Enter command “g++ -std=c++11 main_char.cpp My_vec_char.cpp
+\begin_inset Quotes erd
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+4.
+ Enter command “./a.out”
+\end_layout
+
+\begin_layout Section
+Input/Output Specifications
+\end_layout
+
+\begin_layout Standard
+Input: int, T (with objects of char, int, and float types passed through
+ the template functions)
+\end_layout
+
+\begin_layout Standard
+Output: The generic version will output three sets of values for char, int,
+ and float inputs, respectively
+\end_layout
+
+\begin_layout Standard
+The program catches when the value of an aray index is the default empty
+ value of a data type and skips over it.
+\end_layout
+
+\begin_layout Section
+Logical Exceptions
+\end_layout
+
+\begin_layout Standard
+Program cannot recognize 0 in any array of int, double, or float values,
+ as the system will recognize it as the default 
+\begin_inset Quotes eld
+\end_inset
+
+empty
+\begin_inset Quotes erd
+\end_inset
+
+ value for ints, doubles, and floats, resulting in them being skipped over.
+\end_layout
+
+\begin_layout Standard
+Program cannot recognize strings, as there are no built in values for string
+ that I could make use of, such as those that allow ordered comparisons
+ of char, int, and float type objects.
+\end_layout
+
+\begin_layout Standard
+Input of a certain type must be placed into a vector/array of the same type.
+\end_layout
+
+\begin_layout Section
+Programming Features
+\end_layout
+
+\begin_layout Itemize
+Arrays
+\end_layout
+
+\begin_layout Itemize
+Template Class
+\end_layout
+
+\begin_layout Itemize
+Overloaded Operators
+\end_layout
+
+\begin_layout Section
+Testing Results
+\end_layout
+
+\begin_layout Standard
+NOTE: The files should compile on build.cse.tamu.edu--IF NOT, please compile
+ with linux.cse.tamu.edu or try the following command before compiling again
+ on build: 
+\end_layout
+
+\begin_layout Standard
+export LD_LIBRARY_PATH=/usr/local/gcc4.9.2/objdir/x86_64-unknown-linux-gnu/libstdc
+++-v3/src/.libs:$LD_LIBRARY_PATH
+\end_layout
+
+\begin_layout Standard
+Output for main.o: 
+\end_layout
+
+\begin_layout Standard
+B,
+\end_layout
+
+\begin_layout Standard
+1 
+\end_layout
+
+\begin_layout Standard
+A, B, 
+\end_layout
+
+\begin_layout Standard
+2 A, B, D, 
+\end_layout
+
+\begin_layout Standard
+11 
+\end_layout
+
+\begin_layout Standard
+A, B, D, 
+\end_layout
+
+\begin_layout Standard
+10 
+\end_layout
+
+\begin_layout Standard
+A, B, E, D, 
+\end_layout
+
+\begin_layout Standard
+10 
+\end_layout
+
+\begin_layout Standard
+A, B, E, D, 
+\end_layout
+
+\begin_layout Standard
+Copied 10 element(s) 
+\end_layout
+
+\begin_layout Standard
+A, B, Y, D, 
+\end_layout
+
+\begin_layout Standard
+10 
+\end_layout
+
+\begin_layout Standard
+K, 
+\end_layout
+
+\begin_layout Standard
+V2 has 1 elements(s)
+\end_layout
+
+\begin_layout Standard
+A, B, Y, D, 
+\end_layout
+
+\begin_layout Standard
+V2 has 10 elements(s)
+\end_layout
+
+\begin_layout Standard
+Address of largest value: 2
+\end_layout
+
+\begin_layout Standard
+A, B, D, Y, 
+\end_layout
+
+\begin_layout Standard
+A, B, D, Y, S, 
+\end_layout
+
+\begin_layout Standard
+2, 
+\end_layout
+
+\begin_layout Standard
+1 
+\end_layout
+
+\begin_layout Standard
+5, 2, 
+\end_layout
+
+\begin_layout Standard
+Address of largest value: 2
+\end_layout
+
+\begin_layout Standard
+5, 2, 4, 
+\end_layout
+
+\begin_layout Standard
+11 
+\end_layout
+
+\begin_layout Standard
+5, 2, 4, 
+\end_layout
+
+\begin_layout Standard
+10 
+\end_layout
+
+\begin_layout Standard
+5, 2, 1, 4, 
+\end_layout
+
+\begin_layout Standard
+10 
+\end_layout
+
+\begin_layout Standard
+5, 2, 1, 4, 
+\end_layout
+
+\begin_layout Standard
+Copied 10 element(s).
+ 
+\end_layout
+
+\begin_layout Standard
+5, 2, 7, 4, 
+\end_layout
+
+\begin_layout Standard
+10 
+\end_layout
+
+\begin_layout Standard
+9, 
+\end_layout
+
+\begin_layout Standard
+V5 has 1 element(s)
+\end_layout
+
+\begin_layout Standard
+5, 2, 7, 4, 
+\end_layout
+
+\begin_layout Standard
+V5 has 10 element(s)
+\end_layout
+
+\begin_layout Standard
+Address of largest value: 2 
+\end_layout
+
+\begin_layout Standard
+2, 4, 5, 7, 
+\end_layout
+
+\begin_layout Standard
+2, 4, 5, 7, 3, 
+\end_layout
+
+\begin_layout Standard
+2.5, 
+\end_layout
+
+\begin_layout Standard
+1 
+\end_layout
+
+\begin_layout Standard
+5.4, 2.5, 
+\end_layout
+
+\begin_layout Standard
+2 
+\end_layout
+
+\begin_layout Standard
+5.4, 2.5, 5.7, 
+\end_layout
+
+\begin_layout Standard
+11
+\end_layout
+
+\begin_layout Standard
+5.4, 2.5, 5.7, 
+\end_layout
+
+\begin_layout Standard
+10 
+\end_layout
+
+\begin_layout Standard
+5.4, 2.5, 1.1, 5.7, 
+\end_layout
+
+\begin_layout Standard
+10 
+\end_layout
+
+\begin_layout Standard
+5.4, 2.5, 1.1, 5.7, 
+\end_layout
+
+\begin_layout Standard
+Copied 10 element(s).
+ 
+\end_layout
+
+\begin_layout Standard
+5.4, 2.5, 7.9, 5.7, 
+\end_layout
+
+\begin_layout Standard
+10 
+\end_layout
+
+\begin_layout Standard
+9.9, 
+\end_layout
+
+\begin_layout Standard
+V8 has 1 element(s)
+\end_layout
+
+\begin_layout Standard
+5.4, 2.5, 7.9, 5.7, 
+\end_layout
+
+\begin_layout Standard
+V8 has 10 element(s)
+\end_layout
+
+\begin_layout Standard
+Address of largest value: 2 
+\end_layout
+
+\begin_layout Standard
+2.5, 5.4, 5.7, 7.9, 
+\end_layout
+
+\begin_layout Standard
+2.5, 5.4, 5.7, 7.9, 3.8, 
+\end_layout
+
+\begin_layout Standard
+Output for main_char.o:
+\end_layout
+
+\begin_layout Standard
+B,
+\end_layout
+
+\begin_layout Standard
+1 
+\end_layout
+
+\begin_layout Standard
+A, B, 
+\end_layout
+
+\begin_layout Standard
+2 A, B, D, 
+\end_layout
+
+\begin_layout Standard
+11 
+\end_layout
+
+\begin_layout Standard
+A, B, D, 
+\end_layout
+
+\begin_layout Standard
+10 
+\end_layout
+
+\begin_layout Standard
+A, B, E, D, 
+\end_layout
+
+\begin_layout Standard
+10 
+\end_layout
+
+\begin_layout Standard
+A, B, E, D, 
+\end_layout
+
+\begin_layout Standard
+Copied 10 element(s) 
+\end_layout
+
+\begin_layout Standard
+A, B, Y, D, 
+\end_layout
+
+\begin_layout Standard
+10 
+\end_layout
+
+\begin_layout Standard
+K, 
+\end_layout
+
+\begin_layout Standard
+V2 has 1 element(s)
+\end_layout
+
+\begin_layout Standard
+A, B, Y, D, 
+\end_layout
+
+\begin_layout Standard
+V2 has 10 element(s)
+\end_layout
+
+\begin_layout Standard
+Address of largest value: 2 
+\end_layout
+
+\begin_layout Standard
+A, B, D, Y, 
+\end_layout
+
+\begin_layout Standard
+A, B, D, Y, S, 
+\end_layout
+
+\end_body
+\end_document
